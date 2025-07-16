@@ -86,7 +86,7 @@ def compute_alignment(x_feat_paths, y_feat_paths, metric, topk, precise=True):
         alignment_indices: a numpy array of shape len(x_feat_paths) x len(y_feat_paths) x 2
     """
     
-    os.makedirs(args.output_dir, exist_ok=True)
+
 
     symmetric_metric = (x_feat_paths == y_feat_paths)
     if metric == "cycle_knn":
@@ -174,7 +174,7 @@ if __name__ == "__main__":
             args.modality_y, args.pool_y, args.prompt_y,
             args.metric, args.topk
     )
-    
+    os.makedirs(args.output_dir, exist_ok=True)
     if os.path.exists(save_path) and not args.force_remake:
         print(f"alignment already exists at {save_path}")
         exit()
